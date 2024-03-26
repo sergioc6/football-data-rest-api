@@ -1,14 +1,13 @@
 const express = require("express");
 const router = express.Router();
 
-//const authRoutes = require("./auth.routes");
+const version1Routes = require("./v1/_index.routes");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
   res.render("index", { title: "Doctor Notes APP" });
 });
 
-//router.use(authRoutes);
-
+router.use(version1Routes);
 
 module.exports = router;
