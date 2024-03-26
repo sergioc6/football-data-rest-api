@@ -1,0 +1,21 @@
+version: 3
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8000 : 8000
+    volumes:
+      - .:/api
+
+  db:
+    image: postgres:16.2
+    ports:
+      - 5432:5432
+    enviroment:
+      POSTGRES_USER: football-data
+      POSTGRES_PASSWORD: football-data
+      POSTGRES_DB: football-data
+    command: ["postgres", "-c", "log_statement=all"]
