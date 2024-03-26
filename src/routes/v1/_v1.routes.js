@@ -6,6 +6,6 @@ const competitionsRoutes = require('./competitions.routes')
 
 router.use('/v1/competitions', competitionsRoutes);
 //router.use('/v1/players', playersRoutes);
-//router.use('/v1/teams', teamsRoutes);
+router.use('/v1/teams', teamsRoutes);
 
 module.exports = router;

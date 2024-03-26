@@ -1,12 +1,13 @@
+const { Competition } = require('./../database/models/index');
 const competitionsService = require('./../services/competitions.service');
 
 /**
- * @param {*} req 
- * @param {*} res 
+ * @param {Object} req 
+ * @param {Object} res 
  */
-const getAllCompetitions = (req, res) => {
-
-    res.json({message: 'test'});
+const getAllCompetitions = async (req, res) => {
+    const competitions = await Competition.findAll();
+    res.json({status: 'ok', competitions});
 }
 
 /**
@@ -15,9 +16,18 @@ const getAllCompetitions = (req, res) => {
  */
 const getCompetitionById = async (req, res) => {
     const { id } = req.params;
-    const competition = await competitionsService.getCompetitionByCode(id);
+    let competition = await Competition.findByPk(id);
+    if(!competition) {
+        const competitionResult = await competitionsService.getCompetitionByCode(id);
+        competition = await Competition.create({
+            id: competitionResult.id,
+            name: competitionResult.name,
+            code: competitionResult.code,
+            areaName: competitionResult.area.name
+        });
+    }
 
-    res.json({competition});
+    res.json({status: 'ok', competition});
 }
 
 module.exports = {

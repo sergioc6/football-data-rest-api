@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const version1Routes = require("./v1/_index.routes");
+const version1Routes = require("./v1/_v1.routes");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
