@@ -14,7 +14,7 @@ const listAllCompetitions = async () => {
  * @param {string} code 
  * @returns {Object}
  */
-const getCompetitionByCode = async (code) => {
+const getPlayerBy = async (code) => {
     const { data } = await axiosClient.get(`/competitions/${code}`);
     return data;
 }
