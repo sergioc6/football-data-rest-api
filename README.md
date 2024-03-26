@@ -45,5 +45,8 @@ npx sequelize-cli db:seed:all
 ### Server Development
 By default, the API must be running in localhost:8000
 
+### API Docs
+You could find the API Documentation in the follow [link](https://documenter.getpostman.com/view/1096358/2sA35D6j2E) 
+
 ### TODO
 - Add Unit Tests

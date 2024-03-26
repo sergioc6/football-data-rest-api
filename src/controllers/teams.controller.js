@@ -64,7 +64,20 @@ const getTeamById = async (req, res) => {
     res.json({ status: 'ok', team });
 }
 
+const getPlayersByTeam = async (req, res) => {
+    const { id } = req.params;
+    let team = await Team.findByPk(id);
+    if(!team) {
+        res.status(404).json({status: 'error', message: 'Team not found'});
+        return;
+    }
+    const players =  await team.getPlayers();
+
+    res.json({ status: 'ok', players })
+}
+
 module.exports = {
     getAllTeams,
-    getTeamById
+    getTeamById,
+    getPlayersByTeam
 }
