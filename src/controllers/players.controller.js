@@ -16,6 +16,10 @@ const getAllPlayers = async (req, res) => {
 const getPlayerById = async (req, res) => {
     const { id } = req.params;
     let player = await Player.findByPk(id);
+    if (!player) {
+        res.status(404).json({status: 'error', message: 'Player not found'});
+        return;
+    }
     res.json({status: 'ok', player});
 }
 

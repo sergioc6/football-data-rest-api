@@ -19,7 +19,18 @@ const getCompetitionByCode = async (code) => {
     return data;
 }
 
+/**
+ * List all teams for a particular competition.	
+ * @param {string} code
+ * @returns {Object}
+ */
+const getTeamsForCompetition = async (code) => {
+    const { data } = await axiosClient.get(`/competitions/${code}/teams`);
+    return data;
+}
+
 module.exports = {
     listAllCompetitions,
-    getCompetitionByCode
+    getCompetitionByCode,
+    getTeamsForCompetition
 }

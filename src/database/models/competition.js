@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Competition.belongsToMany(models.Team, { through: 'TeamCompetition', foreignKey: 'competitionId' });
     }
   }
   Competition.init({

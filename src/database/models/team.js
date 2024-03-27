@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Team.hasMany(models.Player, {foreignKey: 'teamId'});
       Team.hasMany(models.Coach, {foreignKey: 'teamId'});
+      Team.belongsToMany(models.Competition, {through: 'TeamCompetition', foreignKey: 'teamId'});
     }
   }
   Team.init({
