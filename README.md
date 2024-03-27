@@ -51,4 +51,5 @@ You could find the API Documentation in the follow [link](https://documenter.get
 ### TODO
 - Add filters and order in Get List endpoints
 - Add validations in each endpoint (express-validator)
+- Add DB Transaction in import competition process.
 - Add Unit Tests
