@@ -1,12 +1,18 @@
 const { Coach } = require('../database/models/index');
+const { getLimitAndOffset } = require('./../utils/pagination.util');
 
 /**
  * @param {Object} req 
  * @param {Object} res 
  */
 const getAllCoaches = async (req, res) => {
-    const coaches = await Coach.findAll();
-    res.json({status: 'ok', coaches});
+    const { page = 1, pageSize = 20} = req.query;
+    const { limit, offset } = getLimitAndOffset(page, pageSize);
+
+    const { count, rows } = await Coach.findAndCountAll({
+        offset, limit
+    });
+    res.json({status: 'ok', count, coaches: rows});
 }
 
 /**

@@ -49,4 +49,6 @@ By default, the API must be running in localhost:8000
 You could find the API Documentation in the follow [link](https://documenter.getpostman.com/view/1096358/2sA35D6j2E) 
 
 ### TODO
+- Add filters and order in Get List endpoints
+- Add validations in each endpoint (express-validator)
 - Add Unit Tests

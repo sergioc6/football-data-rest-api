@@ -1,5 +1,6 @@
 const { Competition, Team, Player, Coach } = require('./../database/models/index');
 const competitionsService = require('./../services/competitions.service');
+const { getLimitAndOffset } = require('./../utils/pagination.util');
 
 /**
  * @param {Object} req 
@@ -83,8 +84,13 @@ const importCompetition = async (req, res) => {
  * @param {Object} res 
  */
 const getAllCompetitions = async (req, res) => {
-    const competitions = await Competition.findAll();
-    res.json({ status: 'ok', competitions });
+    const { page = 1, pageSize = 20} = req.query;
+    const { limit, offset } = getLimitAndOffset(page, pageSize);
+
+    const { count, rows } = await Competition.findAndCountAll({
+        offset, limit
+    });
+    res.json({status: 'ok', count, competitions: rows});
 }
 
 /**
