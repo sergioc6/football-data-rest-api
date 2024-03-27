@@ -11,7 +11,7 @@ Make you sure that you have this tools installed in your computer:
 Create a new enviroment file.
 
 ```sh
-cd factory-6-api
+cd football-data-rest-api
 cp .env.example .env
 ```
 
@@ -30,7 +30,7 @@ docker-compose up -d
 ### Database
 Enter inside the db container
 ```sh
-docker-compose exec db bash
+docker-compose exec app bash
 ```
 #### Run migrations
 ```sh
