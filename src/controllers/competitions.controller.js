@@ -116,12 +116,12 @@ const getCompetitionById = async (req, res) => {
  */
 const getTeamsByCompetition = async (req, res) => {
     const { id } = req.params;
-    let competition = await Competition.findByPk(id);
+    const competition = await Competition.findByPk(id);
     if (!competition) {
         res.status(404).json({ status: 'error', message: 'Competition not found' });
         return;
     }
-    const teams = competition.getTeams();
+    const teams = await competition.getTeams();
     res.json({ status: 'ok', teams });
 }
 
